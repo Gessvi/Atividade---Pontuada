@@ -1,62 +1,61 @@
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <locale.h>
 
-int main() {
-    setlocale(LC_ALL, "portuguese");
-
-int i;
-int numero[5];
-int maior;
-int menor = 9999;
-int negativo;
-float mediaPar = 0;
-float mediaGeral = 0;
-int par = 0;
-int impar = 0;
-int contador = 0;
-int soma;
-int somaPar = 0;
-
-for ( i = 1; i <= 5; i++)
+int main()
 {
-    printf ("Insira um valor: ");
-    scanf ("%d", &numero[i]);
-    contador++;
+	setlocale(LC_ALL, "portuguese");
 
-    if(numero[i] > 0){
-    if (numero[i] % 2 == 0)
-    {
-        par++;
-        somaPar = numero[i];
-    }
-    else
-    {
-        impar++;
-    }
-    }
-    
-    if (numero[i] < 0)
-    {
-        negativo++;
-    }
-    
-    maior = maior > numero[i] ? maior : numero[i];
-    menor = menor < numero[i] ? menor : numero[i];
+	int i;
+	int numero[200];
+	char nome[200][200];
+	int opcao;
+	int contador = 0;
 
-    
-    soma += numero[i];
-}
-mediaPar = somaPar/par;
-mediaGeral = soma/5;
+	do 
+	{
+	printf("Escolha uma das opcoes \n");
+	printf("| [1] Adicionar um Numero \n");
+	printf("| [2] Exibir Numeros Cadastrados \n");
+	scanf("%d", &opcao);
+	
+	switch (opcao)
+	{
+	case 1:
 
-printf ("Media Pares: %.1f \n", mediaPar);
-printf ("Media: %.1f \n", mediaGeral);
-printf ("Maior: %d \n", maior);
-printf ("Menor: %d \n", menor);
-printf ("Numeros Negativos: %d \n", negativo);
-printf ("Numeros Pares: %d \n", par);
-printf ("Numeros Impares: %d \n", impar);
-return 0;
+		fflush(stdin);
+		
+		printf("insira seu nome: \n");
+		gets (nome[contador]);
+
+		printf("Digite seu numero: \n");
+		scanf("%d", &numero[contador]);
+		contador++;
+
+		system("cls || clear");
+
+		break;
+
+	case 2:
+
+		printf("Numeros Cadastrado: \n");
+		for (i = 0; i < contador; i++)
+		{
+			printf (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+			printf("Nome: %s \n", nome[i]);
+			printf ("Numero de Telefone: %d \n", numero[i]);
+			
+			printf (" \n");
+		}
+		break;
+		
+	default:
+		printf("Opcao invalida \n");
+		break;
+	}
+	
+	} while (opcao != 2);
+		
+	return 0;
 }
